@@ -12,8 +12,8 @@ module Login
             session[:login] = true
 
             user = User.find_or_create_by(uid: session[:uid], provider: session[:provider])
-            user.name = session[:name]
-            user.token = session[:token]
+            user.name = request.env['omniauth.auth'].info.name
+            user.token = request.env['omniauth.auth'].auth_token
             user.save
 
             redirect '/'
