@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>E-Factor Logging</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Static navbar -->
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">E-Factor Logging</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if @user != nil %>
+            <li><a name="#"><%= @user.name %></a></li>
+            <% else %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/auth/bitbucket">BitBucket</a></li>
+              </ul>
+            </li>
+            <% end %>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-3">
+
+                <form action="/work/enter" method="POST" role="form">
+
+                    <h2>Enter Work Session</h2>
+
+                    <div class="form-group">
+                        <label for="start">Start</label>
+                        <input name="start" id="start" type="time" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="end">End</label>
+                        <input name="end" id="end" type="time" value="<%= @time.strftime('%H:%M') %>" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interuption">Why did you stop?</label><br />
+                        <textarea cols="40" rows="10" name="interuption" id="interuption"></textarea>
+                    </div>
+
+                    <br />
+
+                    <input type="submit" value="Enter" />
+
+                </form>
+                
+            </div>
+
+            <div class="col-md-7 col-md-push-1">
+
+                <h2>Previous Work Sessions</h2>
+                
+                <div class="col-md-4"><strong>Start</strong></div>
+                <div class="col-md-4"><strong>End</strong></div>
+                <div class="col-md-4"><strong>Note</strong></div>
+
+                <% @user.worksession.each do |w| %>
+                    <div class="col-md-4"><%= w.start %></div>
+                    <div class="col-md-4"><%= w.end %></div>
+                    <div class="col-md-4"><%= w.note %></div>
+                <% end %>
+            </div>
+
+        </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>
