@@ -37,5 +37,6 @@ heroku config:set GITHUB_SECRET=$GITHUB_SECRET
 heroku config:set BITBUCKET_KEY=BITBUCKET_KEY
 heroku config:set BITBUCKET_KEY=$BITBUCKET_KEY
 heroku config:set BITBUCKET_SECRET=$BITBUCKET_SECRET
+heroku config:set MONGOLAB_URI="mongodb://<dbuser>:<dbpassword>@ds061268.mongolab.com:61268/efactor"
 git push heroku master
 ```
