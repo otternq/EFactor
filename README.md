@@ -26,4 +26,4 @@ export BITBUCKET_SECRET=YOUR_BITBUCKET_SECRET
 
 ##Running
 
-`rackup config.ru`
+`rackup -E development config.ru`
