@@ -8,5 +8,5 @@ gem 'sinatra'
 gem 'simplecov'
 gem 'rspec'
 gem 'rspec-nc'
-gem 'ZenTest', "~> 4.9.5"
-gem "chronic_duration", "~> 0.10.2"
+
+gem "grape"
