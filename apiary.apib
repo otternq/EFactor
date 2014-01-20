@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://efactor.nickotter.com
+HOST: http://efactor.nickotter.com/api
 
 
 #EFactor
@@ -26,11 +26,11 @@ The WorkSession resource has the following attributes
     + Body
         
             {
-                "_id" : ObjectId("52dcb465231dab2b52000002"),
-                "start" : ISODate("2014-01-19T20:30:00Z"),
-                "end" : ISODate("2014-01-19T23:00:00Z"),
+                "_id" : "52dcb465231dab2b52000002",
+                "start" : "2014-01-19T20:30:00Z",
+                "end" : "2014-01-19T23:00:00Z",
                 "note" : "Because TEST",
-                "user_id" : ObjectId("52dcb38c231dab0f97000001") 
+                "user_id" : "52dcb38c231dab0f97000001" 
             }
 
 ### Retrieve a Single Work Session [GET]
@@ -50,7 +50,7 @@ The WorkSession resource has the following attributes
 
 + Response 200
 
-##WorkSession Collection [/worksession/]
+##WorkSession Collection [/worksession]
 
 ### Create a Work Session [POST]
 To create a new Work Session simply provide a JSON hash of the *start*, *end*, and *note*attributes for the Work Session. 
